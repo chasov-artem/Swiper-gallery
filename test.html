@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiper Gallery Demo</title>
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/theme.css" />
+  </head>
+  <body>
+    <div class="product-page">
+      <div class="container">
+        <!-- Breadcrumb navigation -->
+        <nav class="breadcrumb"><a href="/">Home</a> / Matte Lip Kit</nav>
+
+        <div class="product-layout">
+          <!-- Product Gallery Section -->
+          <div class="product-gallery">
+            <div
+              class="product-gallery-container"
+              data-slides-desktop="1"
+              data-slides-tablet="1"
+              data-slides-mobile="1"
+              data-show-pagination="true"
+              data-show-navigation="true"
+              data-slide-gap="20"
+            >
+              <div class="swiper product-swiper">
+                <div class="swiper-wrapper">
+                  <!-- Red color product images -->
+                  <div class="swiper-slide" data-color="red">
+                    <div
+                      class="product-image"
+                      style="background-color: #ff0000; color: white"
+                    >
+                      Red Product 1
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="red">
+                    <div
+                      class="product-image"
+                      style="background-color: #ff0000; color: white"
+                    >
+                      Red Product 2
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="red">
+                    <div
+                      class="product-image"
+                      style="background-color: #ff0000; color: white"
+                    >
+                      Red Product 3
+                    </div>
+                  </div>
+
+                  <!-- Blue color product images -->
+                  <div class="swiper-slide" data-color="blue">
+                    <div
+                      class="product-image"
+                      style="background-color: #0000ff; color: white"
+                    >
+                      Blue Product 1
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="blue">
+                    <div
+                      class="product-image"
+                      style="background-color: #0000ff; color: white"
+                    >
+                      Blue Product 2
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="blue">
+                    <div
+                      class="product-image"
+                      style="background-color: #0000ff; color: white"
+                    >
+                      Blue Product 3
+                    </div>
+                  </div>
+
+                  <!-- Green color product images -->
+                  <div class="swiper-slide" data-color="green">
+                    <div
+                      class="product-image"
+                      style="background-color: #00ff00; color: black"
+                    >
+                      Green Product 1
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="green">
+                    <div
+                      class="product-image"
+                      style="background-color: #00ff00; color: black"
+                    >
+                      Green Product 2
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="green">
+                    <div
+                      class="product-image"
+                      style="background-color: #00ff00; color: black"
+                    >
+                      Green Product 3
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Swiper pagination and navigation -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Information Section -->
+          <div class="product-info">
+            <!-- Product title and price -->
+            <h1 class="product-title">Matte Lip Kit</h1>
+            <div class="product-price">235.00 UAH</div>
+
+            <!-- Color variant selector -->
+            <div class="product-variants">
+              <label>Color:</label>
+              <div class="color-selector">
+                <button
+                  class="color-option active"
+                  data-color="all"
+                  style="background-color: #333; color: white"
+                >
+                  All
+                </button>
+                <button
+                  class="color-option"
+                  data-color="red"
+                  style="background-color: red"
+                >
+                  Red
+                </button>
+                <button
+                  class="color-option"
+                  data-color="blue"
+                  style="background-color: blue; color: white"
+                >
+                  Blue
+                </button>
+                <button
+                  class="color-option"
+                  data-color="green"
+                  style="background-color: green"
+                >
+                  Green
+                </button>
+              </div>
+            </div>
+
+            <!-- Add to cart button -->
+            <button class="add-to-cart-btn">Add to cart</button>
+
+            <!-- Product description -->
+            <div class="product-description">
+              <p>
+                My best-selling matte lip kit is your ready-to-go lip routine
+                for a long-lasting, matte lip. This matte liquid lipstick and
+                lip liner duo feature highly pigmented, 8+ hour wear formulas
+                that offer full coverage payoff with a smudge-resistant finish.
+              </p>
+            </div>
+
+            <!-- Dynamic accordion section -->
+            <div class="product-accordion" data-multiple="false">
+              <div class="accordion-item">
+                <button class="accordion-header" type="button">
+                  <span class="accordion-title">Size Guide</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <p>
+                      This product comes in one size that fits most. The lip kit
+                      includes a liquid lipstick and matching lip liner.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header" type="button">
+                  <span class="accordion-title">Care Guide</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <p>
+                      Store in a cool, dry place. Avoid direct sunlight. The
+                      product is long-lasting and smudge-resistant.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header" type="button">
+                  <span class="accordion-title">Details</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    <p>
+                      Highly pigmented formula with 8+ hour wear. Vegan and
+                      cruelty-free. Made with premium ingredients.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Theme JS -->
+    <script src="assets/theme.js"></script>
+  </body>
+</html>
