@@ -1,0 +1,87 @@
+{% comment %}
+  Product Gallery Section with Swiper
+  This section renders the product gallery with configurable settings
+{% endcomment %}
+
+{% render 'product-gallery', product: product %}
+
+{% schema %}
+{
+  "name": "Product Gallery",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Settings"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1,
+      "label": "Slides per view (Desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Tablet Settings"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1,
+      "label": "Slides per view (Tablet)"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Settings"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "default": 1,
+      "label": "Slides per view (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Navigation Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "default": true,
+      "label": "Show pagination dots"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "default": true,
+      "label": "Show navigation arrows"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "slide_gap",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 20,
+      "label": "Gap between slides (px)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Gallery"
+    }
+  ]
+}
+{% endschema %} 
