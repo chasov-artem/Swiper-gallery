@@ -1,0 +1,57 @@
+<div class="product-page">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/">Home</a> / {{ product.title }}
+    </nav>
+    
+    <div class="product-layout">
+      <!-- Product Gallery -->
+      <div class="product-gallery">
+        {% render 'product-gallery', product: product %}
+      </div>
+      
+      <!-- Product Info -->
+      <div class="product-info">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <div class="product-price">{{ product.price | money }}</div>
+        
+        <!-- Color Selector -->
+        {% if product.has_only_default_variant == false %}
+          <div class="product-variants">
+            <label>Color:</label>
+            <div class="color-selector">
+              {% for option in product.options_with_values %}
+                {% if option.name == 'Color' or option.name == 'Colour' %}
+                  {% for value in option.values %}
+                    <button 
+                      class="color-option{% if forloop.first %} active{% endif %}" 
+                      data-color="{{ value | handleize }}"
+                      style="background-color: {{ value | downcase }}"
+                      title="{{ value }}"
+                    >
+                      {{ value }}
+                    </button>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        
+        <!-- Add to Cart -->
+        <form action="/cart/add" method="post" class="product-form">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit" class="add-to-cart-btn">Add to cart</button>
+        </form>
+        
+        <!-- Product Description -->
+        <div class="product-description">
+          {{ product.description }}
+        </div>
+        
+        <!-- Dynamic Accordion -->
+        {% render 'product-accordion', product: product %}
+      </div>
+    </div>
+  </div>
+</div> 

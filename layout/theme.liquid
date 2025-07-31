@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  
+  {{ content_for_header }}
+  
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- Theme CSS -->
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+
+<body>
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+  </main>
+  
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <!-- Theme JS -->
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html> 

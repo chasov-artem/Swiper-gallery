@@ -1,0 +1,49 @@
+{% comment %}
+  Product Gallery with Swiper
+  Schema settings:
+  - slides_per_view_desktop: Number of slides for desktop
+  - slides_per_view_tablet: Number of slides for tablet  
+  - slides_per_view_mobile: Number of slides for mobile
+  - show_pagination: Enable/disable pagination
+  - show_navigation: Enable/disable navigation arrows
+  - slide_gap: Gap between slides
+{% endcomment %}
+
+{% assign slides_per_view_desktop = section.settings.slides_per_view_desktop | default: 1 %}
+{% assign slides_per_view_tablet = section.settings.slides_per_view_tablet | default: 1 %}
+{% assign slides_per_view_mobile = section.settings.slides_per_view_mobile | default: 1 %}
+{% assign show_pagination = section.settings.show_pagination | default: true %}
+{% assign show_navigation = section.settings.show_navigation | default: true %}
+{% assign slide_gap = section.settings.slide_gap | default: 20 %}
+
+<div class="product-gallery-container" 
+     data-slides-desktop="{{ slides_per_view_desktop }}"
+     data-slides-tablet="{{ slides_per_view_tablet }}"
+     data-slides-mobile="{{ slides_per_view_mobile }}"
+     data-show-pagination="{{ show_pagination }}"
+     data-show-navigation="{{ show_navigation }}"
+     data-slide-gap="{{ slide_gap }}">
+  
+  <div class="swiper product-swiper">
+    <div class="swiper-wrapper">
+      {% for image in product.images %}
+        {% assign image_color = image.alt | split: ' ' | first | handleize %}
+        <div class="swiper-slide" data-color="{{ image_color }}">
+          <img src="{{ image | img_url: '800x' }}" 
+               alt="{{ image.alt | escape }}"
+               loading="lazy"
+               class="product-image">
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if show_pagination %}
+      <div class="swiper-pagination"></div>
+    {% endif %}
+    
+    {% if show_navigation %}
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    {% endif %}
+  </div>
+</div> 

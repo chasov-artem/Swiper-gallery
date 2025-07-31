@@ -1,0 +1,27 @@
+{
+  "name": "swiper-gallery-theme",
+  "version": "1.0.0",
+  "description": "Shopify theme with Swiper gallery and color filtering",
+  "main": "index.js",
+  "scripts": {
+    "dev": "shopify theme dev",
+    "build": "shopify theme build",
+    "deploy": "shopify theme push"
+  },
+  "keywords": [
+    "shopify",
+    "theme",
+    "swiper",
+    "gallery",
+    "liquid"
+  ],
+  "author": "Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "@shopify/cli": "^3.0.0",
+    "@shopify/theme": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 
