@@ -20,11 +20,12 @@
           <div class="product-variants">
             <label>Color:</label>
             <div class="color-selector">
+              <button class="color-option active" data-color="all">All</button>
               {% for option in product.options_with_values %}
                 {% if option.name == 'Color' or option.name == 'Colour' %}
                   {% for value in option.values %}
                     <button 
-                      class="color-option{% if forloop.first %} active{% endif %}" 
+                      class="color-option" 
                       data-color="{{ value | handleize }}"
                       style="background-color: {{ value | downcase }}"
                       title="{{ value }}"
