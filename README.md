@@ -52,10 +52,27 @@ shopify theme dev
 
 - **Slides per view (Desktop)** - 1-4 слайди
 - **Slides per view (Tablet)** - 1-3 слайди
-- **Slides per view (Mobile)** - 1-2 слайди
+- **Slides per view (Mobile)** - 1-3 слайди
 - **Show pagination dots** - увімкнути/вимкнути
 - **Show navigation arrows** - увімкнути/вимкнути
 - **Gap between slides** - 0-50px
+
+### Налаштування товару для фільтрації
+
+**Важливо:** Для роботи фільтрації за кольором потрібно:
+
+1. **Додати варіанти кольору до товару:**
+
+   - В Shopify адмінці відкрийте товар
+   - В розділі **Variants** натисніть **"Add option"**
+   - Виберіть **"Color"** як назву опції
+   - Додайте значення: **Red**, **Blue**, **Green**
+   - Натисніть **"Save"**
+
+2. **Налаштувати зображення:**
+   - Завантажте 3-4 фотографії для кожного кольору
+   - В alt-тексті зображення вкажіть колір (наприклад: "red product", "blue product")
+   - Перше слово в alt-тексті повинно відповідати назві варіанту кольору
 
 ### Метафілди для Accordion
 
@@ -83,8 +100,8 @@ shopify theme dev
 ├── layout/
 │   └── theme.liquid
 ├── templates/
-│   ├── product.liquid
-│   └── product.json
+│   ├── index.liquid
+│   └── product.liquid
 ├── sections/
 │   └── product-gallery.liquid
 ├── snippets/

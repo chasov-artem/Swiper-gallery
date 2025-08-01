@@ -9,12 +9,12 @@
   - slide_gap: Gap between slides
 {% endcomment %}
 
-{% assign slides_per_view_desktop = section.settings.slides_per_view_desktop | default: 1 %}
-{% assign slides_per_view_tablet = section.settings.slides_per_view_tablet | default: 1 %}
-{% assign slides_per_view_mobile = section.settings.slides_per_view_mobile | default: 1 %}
-{% assign show_pagination = section.settings.show_pagination | default: true %}
-{% assign show_navigation = section.settings.show_navigation | default: true %}
-{% assign slide_gap = section.settings.slide_gap | default: 20 %}
+{% assign slides_per_view_desktop = 1 %}
+{% assign slides_per_view_tablet = 1 %}
+{% assign slides_per_view_mobile = 1 %}
+{% assign show_pagination = true %}
+{% assign show_navigation = true %}
+{% assign slide_gap = 20 %}
 
 <div class="product-gallery-container" 
      data-slides-desktop="{{ slides_per_view_desktop }}"
