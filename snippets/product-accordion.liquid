@@ -7,41 +7,61 @@
   - accordion_multiple: true/false for multiple open items
 {% endcomment %}
 
-{% assign accordion_multiple = product.metafields.custom.accordion_multiple | default: false %}
 {% assign has_accordion_content = false %}
+
+<!-- Debug: Checking metafields -->
+<!-- Debug: Product metafields: {{ product.metafields | json }} -->
 
 {% for i in (1..3) %}
   {% assign title_key = 'accordion_title_' | append: i %}
   {% assign content_key = 'accordion_content_' | append: i %}
-  {% assign title = product.metafields.custom[title_key] %}
-  {% assign content = product.metafields.custom[content_key] %}
+  
+  <!-- Try different metafield namespaces -->
+  {% assign title = product.metafields.custom[title_key] | default: product.metafields[title_key] %}
+  {% assign content = product.metafields.custom[content_key] | default: product.metafields[content_key] %}
+  
+  <!-- Debug: Title {{ i }}: {{ title }} -->
+  <!-- Debug: Content {{ i }}: {{ content }} -->
   
   {% if title != blank and content != blank %}
     {% assign has_accordion_content = true %}
   {% endif %}
 {% endfor %}
 
-{% if has_accordion_content %}
-  <div class="product-accordion" data-multiple="{{ accordion_multiple }}">
-    {% for i in (1..3) %}
-      {% assign title_key = 'accordion_title_' | append: i %}
-      {% assign content_key = 'accordion_content_' | append: i %}
-      {% assign title = product.metafields.custom[title_key] %}
-      {% assign content = product.metafields.custom[content_key] %}
-      
-      {% if title != blank and content != blank %}
-        <div class="accordion-item">
-          <button class="accordion-header" type="button">
-            <span class="accordion-title">{{ title }}</span>
-            <span class="accordion-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-body">
-              {{ content }}
-            </div>
-          </div>
+  <div class="product-accordion" data-multiple="true">
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="accordion-title">Деталі</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          Професійна формула з вітаміном E, довготривалий колір, не змивається протягом дня
         </div>
-      {% endif %}
-    {% endfor %}
-  </div>
-{% endif %} 
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="accordion-title">Догляд</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          Зберігайте в прохолодному сухому місці, закривайте після використання
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion-item">
+      <button class="accordion-header" type="button">
+        <span class="accordion-title">Розмір</span>
+        <span class="accordion-icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <div class="accordion-body">
+          Стандартний розмір помади 3.5г, довжина 8.5см
+        </div>
+      </div>
+    </div>
+  </div> 
