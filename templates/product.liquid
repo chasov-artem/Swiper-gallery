@@ -16,28 +16,29 @@
         <div class="product-price">{{ product.price | money }}</div>
         
         <!-- Color Selector -->
-        {% if product.has_only_default_variant == false %}
-          <div class="product-variants">
-            <label>Color:</label>
-            <div class="color-selector">
-              <button class="color-option active" data-color="all">All</button>
-              {% for option in product.options_with_values %}
-                {% if option.name == 'Color' or option.name == 'Colour' %}
-                  {% for value in option.values %}
-                    <button 
-                      class="color-option" 
-                      data-color="{{ value | handleize }}"
-                      style="background-color: {{ value | downcase }}"
-                      title="{{ value }}"
-                    >
-                      {{ value }}
-                    </button>
-                  {% endfor %}
-                {% endif %}
-              {% endfor %}
-            </div>
+        <div class="product-variants">
+          <label>Color:</label>
+          <div class="color-selector">
+            <button class="color-option active" data-color="all">All</button>
+            <!-- Debug: {{ product.options_with_values | json }} -->
+            {% for option in product.options_with_values %}
+              <!-- Debug: Option name: {{ option.name }} -->
+              {% if option.name == 'Color' or option.name == 'Colour' or option.name == 'Цвет' %}
+                {% for value in option.values %}
+                  <!-- Debug: Value: {{ value }} -->
+                  <button 
+                    class="color-option" 
+                    data-color="{{ value | handleize }}"
+                    style="background-color: {{ value | downcase }}"
+                    title="{{ value }}"
+                  >
+                    {{ value }}
+                  </button>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
           </div>
-        {% endif %}
+        </div>
         
         <!-- Add to Cart -->
         <form action="/cart/add" method="post" class="product-form">
