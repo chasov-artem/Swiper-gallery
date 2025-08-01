@@ -219,14 +219,41 @@ body {
   text-align: center;
 }
 
-.color-option:hover {
-  border-color: #2c5aa0;
+.color-option.heart {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.color-option.active {
-  border-color: #2c5aa0;
-  background: #2c5aa0;
-  color: white;
+.heart-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.color-option.heart:hover {
+  border-color: #e74c3c;
+  transform: scale(1.1);
+}
+
+.color-option.heart:hover .heart-icon {
+  transform: scale(1.2);
+}
+
+.color-option.heart.active {
+  border-color: #e74c3c;
+  background: #e74c3c;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.color-option.heart.active .heart-icon {
+  transform: scale(1.1);
 }
 
 /* Add to Cart Button */
@@ -278,9 +305,15 @@ body {
   position: relative;
 }
 
-.lipstick-body.red { background: #e74c3c; }
-.lipstick-body.blue { background: #3498db; }
-.lipstick-body.green { background: #2ecc71; }
+.lipstick-body.red {
+  background: #e74c3c;
+}
+.lipstick-body.blue {
+  background: #3498db;
+}
+.lipstick-body.green {
+  background: #2ecc71;
+}
 
 .lipstick-cap {
   width: 25px;
@@ -393,5 +426,15 @@ body {
     padding: 6px 12px;
     font-size: 12px;
     min-width: 60px;
+  }
+
+  .color-option.heart {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .heart-icon {
+    font-size: 16px;
   }
 }
