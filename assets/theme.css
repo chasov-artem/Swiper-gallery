@@ -102,7 +102,8 @@ body {
 .product-image {
   width: 100%;
   max-width: 100%;
-  height: 300px;
+  height: 400px;
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,6 +252,41 @@ body {
 .product-description {
   margin-bottom: 40px;
   line-height: 1.8;
+}
+
+/* Test Images for Lipstick */
+.test-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.lipstick-tube {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.lipstick-body {
+  width: 20px;
+  height: 80px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.lipstick-body.red { background: #e74c3c; }
+.lipstick-body.blue { background: #3498db; }
+.lipstick-body.green { background: #2ecc71; }
+
+.lipstick-cap {
+  width: 25px;
+  height: 30px;
+  background: #f39c12;
+  border-radius: 5px;
 }
 
 /* Accordion */

@@ -9,8 +9,8 @@
   - slide_gap: Gap between slides
 {% endcomment %}
 
-{% assign slides_per_view_desktop = 1 %}
-{% assign slides_per_view_tablet = 1 %}
+{% assign slides_per_view_desktop = 2 %}
+{% assign slides_per_view_tablet = 2 %}
 {% assign slides_per_view_mobile = 1 %}
 {% assign show_pagination = true %}
 {% assign show_navigation = true %}
@@ -35,6 +35,34 @@
                class="product-image">
         </div>
       {% endfor %}
+      
+      <!-- Test images if no product images -->
+      {% if product.images.size == 0 %}
+        <div class="swiper-slide" data-color="red">
+          <div class="test-image red-lipstick">
+            <div class="lipstick-tube">
+              <div class="lipstick-body red"></div>
+              <div class="lipstick-cap"></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide" data-color="blue">
+          <div class="test-image blue-lipstick">
+            <div class="lipstick-tube">
+              <div class="lipstick-body blue"></div>
+              <div class="lipstick-cap"></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide" data-color="green">
+          <div class="test-image green-lipstick">
+            <div class="lipstick-tube">
+              <div class="lipstick-body green"></div>
+              <div class="lipstick-cap"></div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
     </div>
     
     {% if show_pagination %}
