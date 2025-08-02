@@ -13,6 +13,7 @@
 {% comment %} Check for existing metafields (11, 12) {% endcomment %}
 {% assign details_content = product.metafields.custom.11 %}
 {% assign care_content = product.metafields.custom.12 %}
+{% assign size_guide_content = "Standard lipstick size 3.5g, length 8.5cm" %}
 
 {% if details_content != blank or care_content != blank or model_size != blank %}
   {% assign has_metafields = true %}
@@ -58,6 +59,17 @@
          </div>
        </div>
      {% endif %}
+     
+     {% comment %} Size guide section {% endcomment %}
+     <div class="accordion-item">
+       <button class="accordion-header" type="button">
+         <span class="accordion-title">Size guide</span>
+         <span class="accordion-icon">+</span>
+       </button>
+       <div class="accordion-content">
+         <div class="accordion-body">{{ size_guide_content }}</div>
+       </div>
+     </div>
     
                                                                                {% comment %} Add model_s_size if available {% endcomment %}
      {% if model_size != blank %}
