@@ -9,16 +9,14 @@
 {% comment %} Check if we have any metafields set {% endcomment %}
 <!-- Debug: All product metafields = {{ product.metafields | json }} -->
 <!-- Debug: Custom metafields = {{ product.metafields.custom | json }} -->
-{% for i in (1..10) %}
-  {% assign title_key = 'accordion_title_' | append: i %}
-  {% assign content_key = 'accordion_content_' | append: i %}
-  {% assign title = product.metafields.custom[title_key] %}
-  {% assign content = product.metafields.custom[content_key] %}
-  {% if title != blank and content != blank %}
-    {% assign has_metafields = true %}
-    {% assign metafield_items = metafield_items | plus: 1 %}
-  {% endif %}
-{% endfor %}
+
+{% comment %} Check for existing metafields (11, 12) {% endcomment %}
+{% assign details_content = product.metafields.custom.11 %}
+{% assign care_content = product.metafields.custom.12 %}
+
+{% if details_content != blank or care_content != blank or model_size != blank %}
+  {% assign has_metafields = true %}
+{% endif %}
 
 {% comment %} Check for model_s_size metafield {% endcomment %}
 {% assign model_size = product.metafields.custom.model_s_size %}
@@ -33,25 +31,33 @@
   {% comment %} Use metafields if available {% endcomment %}
   <div class="product-accordion" data-multiple="{{ product.metafields.custom.accordion_multiple | default: 'true' }}">
     
-    {% comment %} Render metafield items {% endcomment %}
-    {% for i in (1..10) %}
-      {% assign title_key = 'accordion_title_' | append: i %}
-      {% assign content_key = 'accordion_content_' | append: i %}
-      {% assign title = product.metafields.custom[title_key] %}
-      {% assign content = product.metafields.custom[content_key] %}
-      
-      {% if title != blank and content != blank %}
-        <div class="accordion-item">
-          <button class="accordion-header" type="button">
-            <span class="accordion-title">{{ title }}</span>
-            <span class="accordion-icon">+</span>
-          </button>
-          <div class="accordion-content">
-            <div class="accordion-body">{{ content }}</div>
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
+         {% comment %} Render metafield items {% endcomment %}
+     
+     {% comment %} Details section {% endcomment %}
+     {% if details_content != blank %}
+       <div class="accordion-item">
+         <button class="accordion-header" type="button">
+           <span class="accordion-title">Details</span>
+           <span class="accordion-icon">+</span>
+         </button>
+         <div class="accordion-content">
+           <div class="accordion-body">{{ details_content }}</div>
+         </div>
+       </div>
+     {% endif %}
+     
+     {% comment %} Care section {% endcomment %}
+     {% if care_content != blank %}
+       <div class="accordion-item">
+         <button class="accordion-header" type="button">
+           <span class="accordion-title">Care</span>
+           <span class="accordion-icon">+</span>
+         </button>
+         <div class="accordion-content">
+           <div class="accordion-body">{{ care_content }}</div>
+         </div>
+       </div>
+     {% endif %}
     
                                                                                {% comment %} Add model_s_size if available {% endcomment %}
      {% if model_size != blank %}
