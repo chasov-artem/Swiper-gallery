@@ -247,8 +247,8 @@ body {
 }
 
 .color-option.heart.active {
-  border-color: #e74c3c;
-  background: #e74c3c;
+  border-color: #e8fc3b;
+  background: #e8fc3b;
   box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
@@ -397,7 +397,7 @@ body {
   }
 
   .product-swiper {
-    height: 400px;
+    height: 600px;
   }
 
   .product-title {
