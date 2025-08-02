@@ -1,3 +1,8 @@
+{% comment %}
+  Product Template with Swiper Gallery and Color Filtering
+  Includes dynamic accordion from metafields
+{% endcomment %}
+
 <div class="product-page">
   <div class="container">
     <nav class="breadcrumb">
@@ -15,35 +20,32 @@
         <h1 class="product-title">{{ product.title }}</h1>
         <div class="product-price">{{ product.price | money }}</div>
         
-                 <!-- Color Selector -->
-         <div class="product-variants">
-           <label>Color:</label>
-           <div class="color-selector">
-             <button class="color-option heart active" data-color="all" title="All colors">
-               <svg class="heart-icon" width="54" height="54" viewBox="0 0 24 24" fill="white" stroke="#e74c3c" stroke-width="1.5">
-                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-               </svg>
-             </button>
-             <!-- Debug: {{ product.options_with_values | json }} -->
-             {% for option in product.options_with_values %}
-               <!-- Debug: Option name: {{ option.name }} -->
-               {% if option.name == 'Color' or option.name == 'Colour' or option.name == 'Цвет' %}
-                 {% for value in option.values %}
-                   <!-- Debug: Value: {{ value }} -->
-                   <button 
-                     class="color-option heart" 
-                     data-color="{{ value | handleize }}"
-                     title="{{ value }}"
-                   >
-                     <svg class="heart-icon" width="54" height="54" viewBox="0 0 24 24" fill="{{ value | downcase }}">
-                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                     </svg>
-                   </button>
-                 {% endfor %}
-               {% endif %}
-             {% endfor %}
-           </div>
-         </div>
+        <!-- Color Selector -->
+        <div class="product-variants">
+          <label>Color:</label>
+          <div class="color-selector">
+            <button class="color-option heart active" data-color="all" title="All colors">
+              <svg class="heart-icon" width="54" height="54" viewBox="0 0 24 24" fill="white" stroke="#e74c3c" stroke-width="1.5">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </button>
+            {% for option in product.options_with_values %}
+              {% if option.name == 'Color' or option.name == 'Colour' or option.name == 'Цвет' %}
+                {% for value in option.values %}
+                  <button 
+                    class="color-option heart" 
+                    data-color="{{ value | handleize }}"
+                    title="{{ value }}"
+                  >
+                    <svg class="heart-icon" width="54" height="54" viewBox="0 0 24 24" fill="{{ value | downcase }}">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                  </button>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
         
         <!-- Add to Cart -->
         <div class="product-form">
