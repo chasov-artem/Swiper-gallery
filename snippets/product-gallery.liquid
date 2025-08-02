@@ -9,19 +9,19 @@
   - slide_gap: Gap between slides
 {% endcomment %}
 
-{% assign slides_per_view_desktop = 1 %}
-{% assign slides_per_view_tablet = 1 %}
-{% assign slides_per_view_mobile = 1 %}
-{% assign show_pagination = true %}
-{% assign show_navigation = true %}
-{% assign slide_gap = 20 %}
+{% assign slides_per_view_desktop = settings.slides_per_view_desktop | default: 1 %}
+{% assign slides_per_view_tablet = settings.slides_per_view_tablet | default: 1 %}
+{% assign slides_per_view_mobile = settings.slides_per_view_mobile | default: 1 %}
+{% assign show_pagination = settings.show_pagination | default: true %}
+{% assign show_navigation_arrows = settings.show_navigation_arrows | default: true %}
+{% assign slide_gap = settings.slide_gap | default: 0 %}
 
 <div class="product-gallery-container" 
      data-slides-desktop="{{ slides_per_view_desktop }}"
      data-slides-tablet="{{ slides_per_view_tablet }}"
      data-slides-mobile="{{ slides_per_view_mobile }}"
      data-show-pagination="{{ show_pagination }}"
-     data-show-navigation="{{ show_navigation }}"
+     data-show-navigation="{{ show_navigation_arrows }}"
      data-slide-gap="{{ slide_gap }}">
   
   <div class="swiper product-swiper">
@@ -69,7 +69,7 @@
       <div class="swiper-pagination"></div>
     {% endif %}
     
-    {% if show_navigation %}
+    {% if show_navigation_arrows %}
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     {% endif %}

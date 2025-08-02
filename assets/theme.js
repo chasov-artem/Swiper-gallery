@@ -16,7 +16,7 @@ function initializeSwiper() {
   const slidesMobile = parseInt(galleryContainer.dataset.slidesMobile) || 1;
   const showPagination = galleryContainer.dataset.showPagination === "true";
   const showNavigation = galleryContainer.dataset.showNavigation === "true";
-  const slideGap = parseInt(galleryContainer.dataset.slideGap) || 20;
+  const slideGap = parseInt(galleryContainer.dataset.slideGap) || 0;
 
   // Initialize Swiper with responsive breakpoints
   const swiper = new Swiper(".product-swiper", {
