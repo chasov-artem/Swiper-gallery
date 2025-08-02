@@ -134,7 +134,7 @@ body {
 /* Pagination styles */
 .swiper-pagination {
   position: absolute;
-  bottom: 10px;
+  bottom: 40px;
   left: 90%;
   text-align: center;
   z-index: 10;
@@ -247,8 +247,9 @@ body {
 }
 
 .color-option.heart.active {
+  border: 5px;
   border-color: #e8fc3b;
-  background: #e8fc3b;
+  /* background: #e8fc3b; */
   box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
