@@ -252,25 +252,27 @@
       }
 
       .color-option.heart {
-        width: 50px;
-        height: 50px;
-        min-width: 50px;
-        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        border-radius: 12px;
         padding: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
         overflow: hidden;
+        border: 2px solid transparent;
+        background: transparent;
+        transition: all 0.3s ease;
       }
 
       .heart-icon {
-        font-size: 20px;
+        font-size: 60px;
         transition: transform 0.3s ease;
       }
 
       .color-option.heart:hover {
-        border-color: #e74c3c;
         transform: scale(1.1);
       }
 
@@ -279,10 +281,9 @@
       }
 
       .color-option.heart.active {
-        border: 5px;
-        border-color: #a5019d;
+        border: 2px solid #2c5aa0;
         background: transparent;
-        box-shadow: 0 4px 12px rgba(165, 1, 157, 0.7);
+        box-shadow: 0 4px 12px rgba(165, 1, 157, 0.3);
       }
 
       .color-option.heart.active .heart-icon {
@@ -527,13 +528,20 @@
         }
 
         .color-option.heart {
-          width: 40px;
-          height: 40px;
-          min-width: 40px;
+          width: 48px;
+          height: 48px;
+          min-width: 48px;
+          border: 2px solid transparent;
+          border-radius: 10px;
         }
 
         .heart-icon {
-          font-size: 16px;
+          font-size: 48px;
+        }
+
+        .heart-icon[width] {
+          width: 43px;
+          height: 43px;
         }
       }
     </style>
@@ -637,31 +645,66 @@
                   data-color="all"
                   title="All colors"
                 >
-                  <span class="heart-icon">❤️</span>
+                  <svg
+                    class="heart-icon"
+                    width="54"
+                    height="54"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    stroke="#e74c3c"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
                 </button>
-                <button
-                  class="color-option heart"
-                  data-color="red"
-                  style="background-color: red"
-                  title="Red"
-                >
-                  <span class="heart-icon">❤️</span>
+                <button class="color-option heart" data-color="red" title="Red">
+                  <svg
+                    class="heart-icon"
+                    width="54"
+                    height="54"
+                    viewBox="0 0 24 24"
+                    fill="#e74c3c"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
                 </button>
                 <button
                   class="color-option heart"
                   data-color="blue"
-                  style="background-color: blue"
                   title="Blue"
                 >
-                  <span class="heart-icon">❤️</span>
+                  <svg
+                    class="heart-icon"
+                    width="54"
+                    height="54"
+                    viewBox="0 0 24 24"
+                    fill="#3498db"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
                 </button>
                 <button
                   class="color-option heart"
                   data-color="green"
-                  style="background-color: green"
                   title="Green"
                 >
-                  <span class="heart-icon">❤️</span>
+                  <svg
+                    class="heart-icon"
+                    width="54"
+                    height="54"
+                    viewBox="0 0 24 24"
+                    fill="#2ecc71"
+                  >
+                    <path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                  </svg>
                 </button>
               </div>
             </div>
