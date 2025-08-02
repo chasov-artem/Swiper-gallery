@@ -9,28 +9,29 @@
     <p>This is a demo store showcasing the Swiper gallery functionality.</p>
     
     <div class="featured-products">
-      <h2>Featured Products</h2>
+      <h2>Featured Product</h2>
       <div class="products-grid">
-        {% for product in collections.all.products limit: 4 %}
-          <div class="product-card">
-            <a href="{{ product.url }}">
-              {% if product.featured_image %}
-                <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}">
-              {% else %}
-                <div class="placeholder-image">No Image</div>
-              {% endif %}
-              <h3>{{ product.title }}</h3>
-              <p class="price">{{ product.price | money }}</p>
-            </a>
-          </div>
+        {% for product in collections.all.products %}
+          {% if product.title contains 'Matte Lip Kit' or product.title contains 'помада' or product.title contains 'lipstick' %}
+            <div class="product-card">
+              <a href="{{ product.url }}">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}">
+                {% else %}
+                  <div class="placeholder-image">No Image</div>
+                {% endif %}
+                <h3>{{ product.title }}</h3>
+                <p class="price">{{ product.price | money }}</p>
+              </a>
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
     
     <div class="cta-section">
       <h2>Test the Swiper Gallery</h2>
-      <p>Click on any product to see the Swiper gallery with color filtering in action!</p>
-      <a href="/products" class="btn">View All Products</a>
+      <p>Click on the product to see the Swiper gallery with color filtering in action!</p>
     </div>
   </div>
 </div>
@@ -129,23 +130,8 @@
 
 .cta-section p {
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 0;
   color: #666;
-}
-
-.btn {
-  display: inline-block;
-  padding: 15px 30px;
-  background: #2c5aa0;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.btn:hover {
-  background: #1e4a8a;
 }
 
 @media (max-width: 768px) {
