@@ -8,21 +8,15 @@
 
 {% comment %} Check if we have any metafields set {% endcomment %}
 
-{% comment %} Check for existing metafields (11, 12) {% endcomment %}
-{% assign details_content = product.metafields.custom.11 %}
-{% assign care_content = product.metafields.custom.12 %}
-{% assign size_guide_content = "Standard lipstick size 3.5g, length 8.5cm" %}
+{% comment %} Check for existing metafields {% endcomment %}
+{% assign details_content = product.metafields.custom["Details"] %}
+{% assign care_content = product.metafields.custom["Care guide"] %}
+{% assign size_guide_content = product.metafields.custom["Size guide"] %}
 
-{% if details_content != blank or care_content != blank or model_size != blank %}
+{% if details_content != blank or care_content != blank or size_guide_content != blank %}
   {% assign has_metafields = true %}
 {% endif %}
 
-{% comment %} Check for model_s_size metafield {% endcomment %}
-{% assign model_size = product.metafields.custom.model_s_size %}
-{% if model_size != blank %}
-  {% assign has_metafields = true %}
-  {% assign metafield_items = metafield_items | plus: 1 %}
-{% endif %}
 
 {% if has_metafields %}
   {% comment %} Use metafields if available {% endcomment %}
@@ -30,55 +24,47 @@
     
          {% comment %} Render metafield items {% endcomment %}
      
-     {% comment %} Details section {% endcomment %}
-     {% if details_content != blank %}
-       <div class="accordion-item">
-         <button class="accordion-header" type="button">
-           <span class="accordion-title">Details</span>
-           <span class="accordion-icon">+</span>
-         </button>
-         <div class="accordion-content">
-           <div class="accordion-body">{{ details_content }}</div>
-         </div>
-       </div>
-     {% endif %}
-     
-     {% comment %} Care section {% endcomment %}
-     {% if care_content != blank %}
-       <div class="accordion-item">
-         <button class="accordion-header" type="button">
-           <span class="accordion-title">Care</span>
-           <span class="accordion-icon">+</span>
-         </button>
-         <div class="accordion-content">
-           <div class="accordion-body">{{ care_content }}</div>
-         </div>
-       </div>
-     {% endif %}
-     
-     {% comment %} Size guide section {% endcomment %}
-     <div class="accordion-item">
-       <button class="accordion-header" type="button">
-         <span class="accordion-title">Size guide</span>
-         <span class="accordion-icon">+</span>
-       </button>
-       <div class="accordion-content">
-         <div class="accordion-body">{{ size_guide_content }}</div>
-       </div>
-     </div>
+           {% comment %} Details section {% endcomment %}
+      {% if details_content != blank %}
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">Details</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">{{ details_content }}</div>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% comment %} Care guide section {% endcomment %}
+      {% if care_content != blank %}
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">Care guide</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">{{ care_content }}</div>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% comment %} Size guide section {% endcomment %}
+      {% if size_guide_content != blank %}
+        <div class="accordion-item">
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">Size guide</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">{{ size_guide_content }}</div>
+          </div>
+        </div>
+      {% endif %}
     
                                                                                {% comment %} Add model_s_size if available {% endcomment %}
-     {% if model_size != blank %}
-       <div class="accordion-item">
-         <button class="accordion-header" type="button">
-           <span class="accordion-title">Model's size</span>
-           <span class="accordion-icon">+</span>
-         </button>
-         <div class="accordion-content">
-           <div class="accordion-body">{{ model_size }}</div>
-         </div>
-       </div>
-     {% endif %}
+     
     
   </div>
 {% else %}
