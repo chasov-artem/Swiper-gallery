@@ -250,7 +250,7 @@ body {
   border: 5px;
   border-color: #a5019d;
   background: transparent;
-  box-shadow: 0 4px 12px rgba(165, 1, 157, 0.3);
+  box-shadow: 0 4px 12px rgba(165, 1, 157, 0.7);
 }
 
 .color-option.heart.active .heart-icon {
