@@ -20,8 +20,8 @@
   {% endif %}
 {% endfor %}
 
-{% comment %} Check for Size of model metafield {% endcomment %}
-{% assign model_size = product.metafields.custom["Size of model"] %}
+{% comment %} Check for model_s_size metafield {% endcomment %}
+{% assign model_size = product.metafields.custom.model_s_size %}
 <!-- Debug: model_size = {{ model_size }} -->
 <!-- Debug: model_size blank? = {{ model_size | blank }} -->
 {% if model_size != blank %}
@@ -53,7 +53,7 @@
       {% endif %}
     {% endfor %}
     
-                                       {% comment %} Add Size of model if available {% endcomment %}
+                                                                               {% comment %} Add model_s_size if available {% endcomment %}
      {% if model_size != blank %}
        <div class="accordion-item">
          <button class="accordion-header" type="button">
