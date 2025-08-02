@@ -7,6 +7,8 @@
 {% assign metafield_items = 0 %}
 
 {% comment %} Check if we have any metafields set {% endcomment %}
+<!-- Debug: All product metafields = {{ product.metafields | json }} -->
+<!-- Debug: Custom metafields = {{ product.metafields.custom | json }} -->
 {% for i in (1..10) %}
   {% assign title_key = 'accordion_title_' | append: i %}
   {% assign content_key = 'accordion_content_' | append: i %}
@@ -20,6 +22,8 @@
 
 {% comment %} Check for model_size metafield {% endcomment %}
 {% assign model_size = product.metafields.custom.model_size %}
+<!-- Debug: model_size = {{ model_size }} -->
+<!-- Debug: model_size blank? = {{ model_size | blank }} -->
 {% if model_size != blank %}
   {% assign has_metafields = true %}
   {% assign metafield_items = metafield_items | plus: 1 %}
