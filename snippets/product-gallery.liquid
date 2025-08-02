@@ -1,75 +1,130 @@
 {% comment %}
-  Product Gallery with Swiper
-  Schema settings:
-  - slides_per_view_desktop: Number of slides for desktop
-  - slides_per_view_tablet: Number of slides for tablet  
-  - slides_per_view_mobile: Number of slides for mobile
-  - show_pagination: Enable/disable pagination
-  - show_navigation: Enable/disable navigation arrows
-  - slide_gap: Gap between slides
+  Product Gallery with Swiper Integration
+  Supports schema-based settings for different devices
 {% endcomment %}
 
-{% assign slides_per_view_desktop = settings.slides_per_view_desktop | default: 1 %}
-{% assign slides_per_view_tablet = settings.slides_per_view_tablet | default: 1 %}
-{% assign slides_per_view_mobile = settings.slides_per_view_mobile | default: 1 %}
-{% assign show_pagination = settings.show_pagination | default: true %}
-{% assign show_navigation_arrows = settings.show_navigation_arrows | default: true %}
-{% assign slide_gap = settings.slide_gap | default: 0 %}
+<div class="product-gallery-container"
+     data-slides-desktop="{{ settings.slides_per_view_desktop | default: 1 }}"
+     data-slides-tablet="{{ settings.slides_per_view_tablet | default: 1 }}"
+     data-slides-mobile="{{ settings.slides_per_view_mobile | default: 1 }}"
+     data-show-pagination="{{ settings.show_pagination | default: true }}"
+     data-show-navigation="{{ settings.show_navigation_arrows | default: true }}"
+     data-slide-gap="{{ settings.slide_gap | default: 0 }}">
 
-<div class="product-gallery-container" 
-     data-slides-desktop="{{ slides_per_view_desktop }}"
-     data-slides-tablet="{{ slides_per_view_tablet }}"
-     data-slides-mobile="{{ slides_per_view_mobile }}"
-     data-show-pagination="{{ show_pagination }}"
-     data-show-navigation="{{ show_navigation_arrows }}"
-     data-slide-gap="{{ slide_gap }}">
-  
   <div class="swiper product-swiper">
     <div class="swiper-wrapper">
-      {% for image in product.images %}
-        {% assign image_color = image.alt | split: ' ' | first | handleize %}
-        <div class="swiper-slide" data-color="{{ image_color }}">
-          <img src="{{ image | img_url: '800x' }}" 
-               alt="{{ image.alt | escape }}"
-               loading="lazy"
-               class="product-image">
-        </div>
-      {% endfor %}
       
-      <!-- Test images if no product images -->
-      {% if product.images.size == 0 %}
-        <div class="swiper-slide" data-color="red">
-          <div class="test-image red-lipstick">
-            <div class="lipstick-tube">
-              <div class="lipstick-body red"></div>
-              <div class="lipstick-cap"></div>
-            </div>
+      {% comment %} Test images for different colors - 3-4 photos per color {% endcomment %}
+      
+      {% comment %} Red color variants (4 photos) {% endcomment %}
+      <div class="swiper-slide" data-color="red">
+        <div class="test-image red-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body red"></div>
+            <div class="lipstick-cap"></div>
           </div>
         </div>
-        <div class="swiper-slide" data-color="blue">
-          <div class="test-image blue-lipstick">
-            <div class="lipstick-tube">
-              <div class="lipstick-body blue"></div>
-              <div class="lipstick-cap"></div>
-            </div>
+      </div>
+      <div class="swiper-slide" data-color="red">
+        <div class="test-image red-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body red"></div>
+            <div class="lipstick-cap"></div>
           </div>
         </div>
-        <div class="swiper-slide" data-color="green">
-          <div class="test-image green-lipstick">
-            <div class="lipstick-tube">
-              <div class="lipstick-body green"></div>
-              <div class="lipstick-cap"></div>
-            </div>
+      </div>
+      <div class="swiper-slide" data-color="red">
+        <div class="test-image red-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body red"></div>
+            <div class="lipstick-cap"></div>
           </div>
         </div>
-      {% endif %}
+      </div>
+      <div class="swiper-slide" data-color="red">
+        <div class="test-image red-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body red"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      
+      {% comment %} Blue color variants (4 photos) {% endcomment %}
+      <div class="swiper-slide" data-color="blue">
+        <div class="test-image blue-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body blue"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" data-color="blue">
+        <div class="test-image blue-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body blue"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" data-color="blue">
+        <div class="test-image blue-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body blue"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" data-color="blue">
+        <div class="test-image blue-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body blue"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      
+      {% comment %} Green color variants (4 photos) {% endcomment %}
+      <div class="swiper-slide" data-color="green">
+        <div class="test-image green-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body green"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" data-color="green">
+        <div class="test-image green-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body green"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" data-color="green">
+        <div class="test-image green-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body green"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" data-color="green">
+        <div class="test-image green-lipstick">
+          <div class="lipstick-tube">
+            <div class="lipstick-body green"></div>
+            <div class="lipstick-cap"></div>
+          </div>
+        </div>
+      </div>
+      
     </div>
-    
-    {% if show_pagination %}
+
+    {% if settings.show_pagination %}
       <div class="swiper-pagination"></div>
     {% endif %}
-    
-    {% if show_navigation_arrows %}
+
+    {% if settings.show_navigation_arrows %}
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     {% endif %}
