@@ -49,7 +49,11 @@
         
         <!-- Product Description -->
         <div class="product-description">
-          {{ product.description }}
+          {% if product.title contains 'Matte Lip Kit' %}
+            <p>Professional matte lip kit with long-lasting formula. Features highly pigmented, 8+ hour wear formulas that offer full coverage payoff with a smudge-resistant finish. Perfect for creating bold, matte lips that stay put all day.</p>
+          {% else %}
+            {{ product.description }}
+          {% endif %}
         </div>
         
         <!-- Dynamic Accordion -->
