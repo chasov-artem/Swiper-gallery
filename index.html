@@ -1,131 +1,943 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Swiper Gallery Theme - Demo</title>
-
-    <!-- Swiper CSS -->
+    <title>Swiper Gallery Theme - Test Demo</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
-
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="assets/theme.css" />
-
     <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           sans-serif;
-        margin: 0;
-        padding: 20px;
-        background: #f5f5f5;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
       }
-      .demo-header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-      .demo-header h1 {
-        color: #2c5aa0;
-        margin-bottom: 10px;
-      }
-      .demo-header p {
-        color: #666;
-        font-size: 18px;
-      }
-      .demo-links {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 40px;
-      }
-      .demo-links a {
-        padding: 12px 24px;
-        background: #2c5aa0;
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: 600;
-        transition: background 0.3s ease;
-      }
-      .demo-links a:hover {
-        background: #1e4a8a;
-      }
-      .features {
-        max-width: 800px;
+
+      .container {
+        max-width: 1200px;
         margin: 0 auto;
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 0 20px;
       }
-      .features h2 {
+
+      /* Header */
+      .header {
+        text-align: center;
+        padding: 40px 0;
+        background: linear-gradient(135deg, #2c5aa0, #1e4a8a);
+        color: white;
+        margin-bottom: 40px;
+      }
+
+      .header h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+
+      .header p {
+        font-size: 18px;
+        opacity: 0.9;
+      }
+
+      /* Product Page Layout */
+      .product-page {
+        padding: 40px 0;
+      }
+
+      .breadcrumb {
+        margin-bottom: 30px;
+        font-size: 14px;
+      }
+
+      .breadcrumb a {
+        color: #666;
+        text-decoration: none;
+      }
+
+      .breadcrumb a:hover {
+        color: #333;
+      }
+
+      /* Main layout using Flexbox */
+      .product-layout {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .product-gallery {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .product-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      /* Swiper container styles */
+      .product-swiper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        max-height: 900px;
+        position: relative;
+      }
+
+      .swiper-wrapper {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        max-height: 600px;
+      }
+
+      .swiper-slide {
+        width: 100%;
+        max-width: 100%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border-radius: 8px;
+        overflow: hidden;
+        max-height: 600px;
+      }
+
+      /* Hidden slides styles */
+      .swiper-slide.hidden {
+        display: none;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Product image styles */
+      .product-image {
+        width: 100%;
+        max-width: 100%;
+        height: 500px;
+        object-fit: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      /* Gallery container styles */
+      .product-gallery-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        max-height: none;
+        padding-bottom: 0;
+      }
+
+      /* Main gallery styles */
+      .product-gallery {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        max-height: none;
+        padding-bottom: 0;
+      }
+
+      /* Pagination styles */
+      .swiper-pagination {
+        position: absolute;
+        bottom: 40px;
+        left: 90%;
+        text-align: center;
+        z-index: 10;
+      }
+
+      .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        background: #333;
+        opacity: 0.5;
+        margin: 0 6px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #2c5aa0;
+        transform: scale(1.2);
+      }
+
+      /* Navigation arrows styles */
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 50%;
+        color: #333;
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
+
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.1);
+      }
+
+      /* Product Info */
+      .product-title {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .product-price {
+        font-size: 24px;
+        font-weight: 600;
         color: #2c5aa0;
         margin-bottom: 20px;
       }
-      .features ul {
+
+      /* Color Selector */
+      .product-variants {
+        margin-bottom: 20px;
+      }
+
+      .product-variants label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .color-selector {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .color-option {
+        padding: 8px 16px;
+        border: 2px solid #ddd;
+        border-radius: 20px;
+        background: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        min-width: 80px;
+        text-align: center;
+      }
+
+      .color-option.heart {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        border-radius: 50%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .heart-icon {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .color-option.heart:hover {
+        border-color: #e74c3c;
+        transform: scale(1.1);
+      }
+
+      .color-option.heart:hover .heart-icon {
+        transform: scale(1.2);
+      }
+
+      .color-option.heart.active {
+        border: 5px;
+        border-color: #a5019d;
+        background: transparent;
+        box-shadow: 0 4px 12px rgba(165, 1, 157, 0.7);
+      }
+
+      .color-option.heart.active .heart-icon {
+        transform: scale(1.1);
+      }
+
+      /* Add to Cart Button */
+      .add-to-cart-btn {
+        width: 100%;
+        padding: 15px 30px;
+        background: #2c5aa0;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-bottom: 20px;
+      }
+
+      .add-to-cart-btn:hover {
+        background: #1e4a8a;
+      }
+
+      /* Product Description */
+      .product-description {
+        margin-bottom: 25px;
         line-height: 1.8;
       }
-      .features li {
-        margin-bottom: 10px;
+
+      /* Test Images for Lipstick */
+      .test-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        background: #f8f9fa;
+        border-radius: 8px;
+      }
+
+      .lipstick-tube {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lipstick-body {
+        width: 20px;
+        height: 80px;
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .lipstick-body.red {
+        background: #e74c3c;
+      }
+      .lipstick-body.blue {
+        background: #3498db;
+      }
+      .lipstick-body.green {
+        background: #2ecc71;
+      }
+
+      .lipstick-cap {
+        width: 25px;
+        height: 30px;
+        background: #f39c12;
+        border-radius: 5px;
+      }
+
+      /* Accordion */
+      .product-accordion {
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        background: #fff;
+      }
+
+      .accordion-item {
+        border-bottom: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+      }
+
+      .accordion-item:last-child {
+        border-bottom: none;
+      }
+
+      .accordion-item:hover {
+        background: #fafafa;
+      }
+
+      .accordion-header {
+        width: 100%;
+        padding: 24px 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+        font-family: inherit;
+      }
+
+      .accordion-header:hover {
+        background: #f5f5f5;
+      }
+
+      .accordion-title {
+        font-weight: 500;
+        font-size: 16px;
+        color: #2c3e50;
+        margin: 0;
+      }
+
+      .accordion-icon {
+        font-size: 18px;
+        font-weight: 400;
+        color: #7f8c8d;
+        transition: all 0.3s ease;
+        transform: rotate(0deg);
+      }
+
+      .accordion-item.active .accordion-icon {
+        transform: rotate(180deg);
+        color: #2c5aa0;
+      }
+
+      .accordion-item.active .accordion-header {
+        background: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #fff;
+      }
+
+      .accordion-item.active .accordion-content {
+        max-height: 600px;
+      }
+
+      .accordion-body {
+        padding: 0 20px 24px 20px;
+        line-height: 1.7;
+        color: #555;
+        font-size: 15px;
+      }
+
+      /* Features Section */
+      .features-section {
+        margin: 60px 0;
+        padding: 40px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .feature-card {
+        padding: 30px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+
+      .feature-card h3 {
+        color: #2c5aa0;
+        margin-bottom: 15px;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .product-layout {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .product-gallery,
+        .product-info {
+          flex: none;
+          width: 100%;
+        }
+
+        .product-swiper {
+          height: 500px;
+        }
+
+        .product-image {
+          height: 450px;
+        }
+
+        .product-title {
+          font-size: 24px;
+        }
+
+        .product-price {
+          font-size: 20px;
+        }
+
+        .container {
+          padding: 0 15px;
+        }
+
+        .header h1 {
+          font-size: 36px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .product-swiper {
+          height: 400px;
+        }
+
+        .product-image {
+          height: 350px;
+        }
+
+        .color-selector {
+          gap: 8px;
+        }
+
+        .color-option {
+          padding: 6px 12px;
+          font-size: 12px;
+          min-width: 60px;
+        }
+
+        .color-option.heart {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+        }
+
+        .heart-icon {
+          font-size: 16px;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="demo-header">
-      <h1>🎨 Swiper Gallery Theme</h1>
-      <p>Shopify тема з Swiper-галереєю та фільтрацією за кольором</p>
+    <div class="header">
+      <div class="container">
+        <h1>Swiper Gallery Theme</h1>
+        <p>Shopify Test Task - Complete Implementation</p>
+      </div>
     </div>
 
-    <div class="demo-links">
-      <a
-        href="https://chasov-artem.github.io/Swiper-gallery/test.html"
-        target="_blank"
-        >🚀 Демо функціональності</a
-      >
-      <a href="https://github.com/chasov-artem/Swiper-gallery" target="_blank"
-        >📁 GitHub репозиторій</a
-      >
+    <div class="product-page">
+      <div class="container">
+        <nav class="breadcrumb"><a href="/">Home</a> / Matte Lip Kit</nav>
+
+        <div class="product-layout">
+          <!-- Product Gallery -->
+          <div class="product-gallery">
+            <div
+              class="product-gallery-container"
+              data-slides-desktop="1"
+              data-slides-tablet="1"
+              data-slides-mobile="1"
+              data-show-pagination="true"
+              data-show-navigation="true"
+              data-slide-gap="0"
+            >
+              <div class="swiper product-swiper">
+                <div class="swiper-wrapper">
+                  <!-- Test images for different colors -->
+                  <div class="swiper-slide" data-color="red">
+                    <div class="test-image red-lipstick">
+                      <div class="lipstick-tube">
+                        <div class="lipstick-body red"></div>
+                        <div class="lipstick-cap"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="blue">
+                    <div class="test-image blue-lipstick">
+                      <div class="lipstick-tube">
+                        <div class="lipstick-body blue"></div>
+                        <div class="lipstick-cap"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="green">
+                    <div class="test-image green-lipstick">
+                      <div class="lipstick-tube">
+                        <div class="lipstick-body green"></div>
+                        <div class="lipstick-cap"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="red">
+                    <div class="test-image red-lipstick">
+                      <div class="lipstick-tube">
+                        <div class="lipstick-body red"></div>
+                        <div class="lipstick-cap"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="blue">
+                    <div class="test-image blue-lipstick">
+                      <div class="lipstick-tube">
+                        <div class="lipstick-body blue"></div>
+                        <div class="lipstick-cap"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide" data-color="green">
+                    <div class="test-image green-lipstick">
+                      <div class="lipstick-tube">
+                        <div class="lipstick-body green"></div>
+                        <div class="lipstick-cap"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="product-info">
+            <h1 class="product-title">Matte Lip Kit</h1>
+            <div class="product-price">₴235.00</div>
+
+            <!-- Color Selector -->
+            <div class="product-variants">
+              <label>Color:</label>
+              <div class="color-selector">
+                <button
+                  class="color-option heart active"
+                  data-color="all"
+                  title="All colors"
+                >
+                  <span class="heart-icon">❤️</span>
+                </button>
+                <button
+                  class="color-option heart"
+                  data-color="red"
+                  style="background-color: red"
+                  title="Red"
+                >
+                  <span class="heart-icon">❤️</span>
+                </button>
+                <button
+                  class="color-option heart"
+                  data-color="blue"
+                  style="background-color: blue"
+                  title="Blue"
+                >
+                  <span class="heart-icon">❤️</span>
+                </button>
+                <button
+                  class="color-option heart"
+                  data-color="green"
+                  style="background-color: green"
+                  title="Green"
+                >
+                  <span class="heart-icon">❤️</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Add to Cart -->
+            <div class="product-form">
+              <button type="button" class="add-to-cart-btn">Add to cart</button>
+            </div>
+
+            <!-- Product Description -->
+            <div class="product-description">
+              <p>
+                Professional matte lip kit with long-lasting formula. Features
+                highly pigmented, 8+ hour wear formulas that offer full coverage
+                payoff with a smudge-resistant finish. Perfect for creating
+                bold, matte lips that stay put all day.
+              </p>
+            </div>
+
+            <!-- Dynamic Accordion -->
+            <div class="product-accordion" data-multiple="true">
+              <div class="accordion-item">
+                <button class="accordion-header" type="button">
+                  <span class="accordion-title">Details</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    Professional formula with vitamin E, long-lasting color,
+                    does not wash off during the day
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header" type="button">
+                  <span class="accordion-title">Care</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    Store in a cool dry place, close after use
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header" type="button">
+                  <span class="accordion-title">Size</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-body">
+                    Standard lipstick size 3.5g, length 8.5cm
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="features">
-      <h2>✨ Функціональність теми:</h2>
-      <ul>
-        <li><strong>Swiper-галерея</strong> з налаштуваннями через schema</li>
-        <li>
-          <strong>Фільтрація за кольором</strong> без перезавантаження сторінки
-        </li>
-        <li><strong>Динамічний accordion</strong> з метафілдів продукту</li>
-        <li><strong>Адаптивний дизайн</strong> для всіх пристроїв</li>
-        <li><strong>Налаштування через адмін-панель</strong> Shopify</li>
-      </ul>
-
-      <h2>🔧 Технології:</h2>
-      <ul>
-        <li><strong>HTML + Liquid</strong> - шаблони Shopify</li>
-        <li><strong>CSS</strong> - стилізація та адаптивність</li>
-        <li><strong>JavaScript</strong> - інтерактивність</li>
-        <li><strong>Swiper.js</strong> - галерея</li>
-        <li><strong>Shopify CLI</strong> - розробка</li>
-      </ul>
-
-      <h2>📋 Структура проекту:</h2>
-      <ul>
-        <li><code>layout/theme.liquid</code> - головний шаблон</li>
-        <li><code>templates/product.liquid</code> - сторінка продукту</li>
-        <li><code>sections/product-gallery.liquid</code> - секція галереї</li>
-        <li><code>snippets/</code> - компоненти</li>
-        <li><code>assets/</code> - CSS та JavaScript</li>
-        <li><code>config/</code> - налаштування теми</li>
-      </ul>
+    <div class="features-section">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: 30px; color: #2c5aa0">
+          ✅ All Requirements Completed
+        </h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>🎯 Swiper Gallery with Schema Settings</h3>
+            <ul>
+              <li>✅ Slides per view for different devices</li>
+              <li>✅ Pagination toggle</li>
+              <li>✅ Navigation arrows toggle</li>
+              <li>✅ Gap between slides</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>🎨 Color Filtering</h3>
+            <ul>
+              <li>✅ Filter by color without page reload</li>
+              <li>✅ 3-4 photos per color variant</li>
+              <li>✅ Heart-shaped color buttons</li>
+              <li>✅ Dynamic slide filtering</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>📋 Dynamic Accordion</h3>
+            <ul>
+              <li>✅ Metafields integration</li>
+              <li>✅ Empty content validation</li>
+              <li>✅ Multiple/single open settings</li>
+              <li>✅ Fallback content</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <h3>📱 Responsive Design</h3>
+            <ul>
+              <li>✅ Mobile, tablet, desktop</li>
+              <li>✅ HTML + CSS + JS + Liquid</li>
+              <li>✅ Shopify CLI deployment</li>
+              <li>✅ GitHub repository</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-      // GitHub Pages analytics
-      if (window.location.hostname === "chasov-artem.github.io") {
-        console.log("GitHub Pages demo loaded successfully!");
+      // Theme JavaScript - Main initialization
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeSwiper();
+        initializeColorFilter();
+        initializeAccordion();
+      });
+
+      // Initialize Swiper Gallery with responsive settings
+      function initializeSwiper() {
+        const galleryContainer = document.querySelector(
+          ".product-gallery-container"
+        );
+        if (!galleryContainer) return;
+
+        // Get settings from data attributes for different devices
+        const slidesDesktop =
+          parseInt(galleryContainer.dataset.slidesDesktop) || 1;
+        const slidesTablet =
+          parseInt(galleryContainer.dataset.slidesTablet) || 1;
+        const slidesMobile =
+          parseInt(galleryContainer.dataset.slidesMobile) || 1;
+        const showPagination =
+          galleryContainer.dataset.showPagination === "true";
+        const showNavigation =
+          galleryContainer.dataset.showNavigation === "true";
+        const slideGap = parseInt(galleryContainer.dataset.slideGap) || 0;
+
+        // Initialize Swiper with responsive breakpoints
+        const swiper = new Swiper(".product-swiper", {
+          slidesPerView: slidesDesktop,
+          spaceBetween: slideGap,
+          loop: false,
+          pagination: showPagination
+            ? {
+                el: ".swiper-pagination",
+                clickable: true,
+              }
+            : false,
+          navigation: showNavigation
+            ? {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }
+            : false,
+          breakpoints: {
+            320: {
+              slidesPerView: slidesMobile,
+              spaceBetween: slideGap,
+            },
+            768: {
+              slidesPerView: slidesTablet,
+              spaceBetween: slideGap,
+            },
+            1024: {
+              slidesPerView: slidesDesktop,
+              spaceBetween: slideGap,
+            },
+          },
+        });
+
+        // Store swiper instance globally for color filtering functionality
+        window.productSwiper = swiper;
       }
+
+      // Initialize Color Filter functionality
+      function initializeColorFilter() {
+        const colorOptions = document.querySelectorAll(".color-option");
+        if (!colorOptions.length) return;
+
+        // Add click event listeners to color buttons
+        colorOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            const selectedColor = this.dataset.color;
+
+            // Update active state of color buttons
+            colorOptions.forEach((opt) => opt.classList.remove("active"));
+            this.classList.add("active");
+
+            // Filter slides based on selected color
+            filterSlidesByColor(selectedColor);
+          });
+        });
+      }
+
+      // Filter slides by color without page reload
+      function filterSlidesByColor(color) {
+        const slides = document.querySelectorAll(".swiper-slide");
+        const swiper = window.productSwiper;
+
+        if (!slides.length || !swiper) return;
+
+        // Count visible slides for this color
+        let visibleSlides = 0;
+
+        // Show/hide slides based on color selection
+        slides.forEach((slide) => {
+          const slideColor = slide.dataset.color;
+
+          if (color === "all" || slideColor === color) {
+            slide.classList.remove("hidden");
+            visibleSlides++;
+          } else {
+            slide.classList.add("hidden");
+          }
+        });
+
+        // Update swiper only if we have visible slides
+        if (visibleSlides > 0) {
+          // Force swiper to recalculate dimensions after filtering
+          swiper.updateSize();
+          swiper.updateSlides();
+          swiper.updateProgress();
+          swiper.updateSlidesClasses();
+
+          // Go to first slide after filtering
+          swiper.slideTo(0, 0);
+
+          // Force another update after slide change
+          setTimeout(() => {
+            swiper.update();
+          }, 100);
+        }
+      }
+
+      // Initialize Dynamic Accordion functionality
+      function initializeAccordion() {
+        const accordion = document.querySelector(".product-accordion");
+        if (!accordion) return;
+
+        const items = accordion.querySelectorAll(".accordion-item");
+        const allowMultiple = accordion.dataset.multiple === "true";
+
+        // Add click event listeners to accordion headers
+        items.forEach((item) => {
+          const header = item.querySelector(".accordion-header");
+          const content = item.querySelector(".accordion-content");
+
+          header.addEventListener("click", function () {
+            const isActive = item.classList.contains("active");
+
+            // Close other items if multiple items not allowed
+            if (!allowMultiple) {
+              items.forEach((otherItem) => {
+                if (otherItem !== item) {
+                  otherItem.classList.remove("active");
+                }
+              });
+            }
+
+            // Toggle current accordion item
+            if (isActive) {
+              item.classList.remove("active");
+            } else {
+              item.classList.add("active");
+            }
+          });
+        });
+      }
+
+      // Handle window resize for responsive behavior
+      window.addEventListener("resize", function () {
+        if (window.productSwiper) {
+          window.productSwiper.update();
+        }
+      });
     </script>
   </body>
 </html>
